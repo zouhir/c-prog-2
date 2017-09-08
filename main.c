@@ -169,6 +169,10 @@ void printMenu(void) {
  */
 void printTable(student_t students[], int count)
 {
+    if(count == 0) {
+        printf("No students to print");
+        return;
+    }
     printf("%-10s %-10s %-6s\n", "Name", "Birthday", "GPA");
     printf("%-10s %-10s %-6s\n", "----------", "----------", "------");
     for (int i = 0; i < count; i++) {
