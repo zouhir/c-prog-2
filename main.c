@@ -118,8 +118,8 @@ int main() {
     int count = 0;  /**< initial count for how many students added */
     student_t studentlist[CLASSROOM_SIZE]; /**< students array of size CLASSROOM_SIZE*/
 
-    while (selection != 6) { // exiting on selection 6
-        printMenu(); // start by printing out the selection menu
+    while (selection != 6) { /* exiting on selection 6 */
+        printMenu(); /* start by printing out the selection menu */
         scanf("%d", &selection);
         switch(selection){
             case 1:
@@ -291,12 +291,12 @@ void addStudent(student_t students[], int index) {
  * @brief implemenation for delete defined above, check definition for more details.
  */
 int deleteStudent(student_t students[], int count) {
-    if(count == 0) { // if class is empty, do nothing
+    if(count == 0) { /* if class is empty, do nothing */
         printf("\nClass room is already empty\n");
         return 0;
     }
     printf("\nWe have deleted %s from the class \n", students[count - 1].name);
-    return count - 1; // decerement the counter value
+    return count - 1; /* decerement the counter value */
 }
 
 /**
@@ -306,29 +306,29 @@ int deleteStudent(student_t students[], int count) {
 void writeToFile(student_t students[], int count) {
     FILE *outfile; /**< the destination file object */
 
-    // trying to open students.txt file with `w` write permission
+    /* trying to open students.txt file with `w` write permission */
     outfile = fopen ("students.txt","w");
     if (outfile == NULL)
     {
-        fprintf(stderr, "\nError opening students.txt\n"); // Error reading the file, exit.
+        fprintf(stderr, "\nError opening students.txt\n"); /* Error reading the file, exit. */
         exit (1);
     }
 
     for(int i = 0; i < count; ++i) {
-        fwrite (&students[i], sizeof(struct student), 1, outfile); // write all students to the file
+        fwrite (&students[i], sizeof(struct student), 1, outfile); /* write all students to the file. */
     }
-    fclose(outfile); // never forget to close or your data won't be written.
+    fclose(outfile); /* never forget to close or your data won't be written. */
 }
 
 int readFromFile(student_t students[]) {
     FILE *input;
     int count = 0;
 
-    // trying to open students.txt file with `r` only permission
+    /* trying to open students.txt file with `r` only permission */
     input = fopen ("students.txt","r");
     if (input == NULL)
     {
-        fprintf(stderr, "\nError opening students.txt\n"); // Error reading the file, exit.
+        fprintf(stderr, "\nError opening students.txt\n"); /* Error reading the file, exit. */
         exit (1);
     }
     /**
@@ -338,6 +338,6 @@ int readFromFile(student_t students[]) {
     while(fread(&students[count],sizeof(struct student),1, input) > 0 && count < CLASSROOM_SIZE) {
         count ++;
     }
-    fclose(input); // close the file.
-    return count; // return the count.
+    fclose(input); /* close the file. */
+    return count; /* return the count. */
 }
