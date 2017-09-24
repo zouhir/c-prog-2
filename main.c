@@ -175,7 +175,8 @@ void printTable(student_t students[], int count)
     }
     printf("%-10s %-10s %-6s\n", "Name", "Birthday", "GPA");
     printf("%-10s %-10s %-6s\n", "----------", "----------", "------");
-    for (int i = 0; i < count; i++) {
+    int i;
+    for (i = 0; i < count; i++) {
         printf("%-10s %d-%d-%-6d %.4f\n", students[i].name, students[i].birthday.day, students[i].birthday.day, students[i].birthday.year, students[i].gpa);
     }
 }
@@ -313,8 +314,8 @@ void writeToFile(student_t students[], int count) {
         fprintf(stderr, "\nError opening students.txt\n"); /* Error reading the file, exit. */
         exit (1);
     }
-
-    for(int i = 0; i < count; ++i) {
+    int i;
+    for (i = 0; i < count; ++i) {
         fwrite (&students[i], sizeof(struct student), 1, outfile); /* write all students to the file. */
     }
     fclose(outfile); /* never forget to close or your data won't be written. */
